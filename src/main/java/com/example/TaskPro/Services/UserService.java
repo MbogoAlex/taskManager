@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-    @Autowired
+
     private UserRepository repository;
 
-    @Autowired
+
     private PasswordEncoder passwordEncoder;
 
     public UserEntity registerUser(UserEntity userInfo) {

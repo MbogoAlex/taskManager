@@ -1,7 +1,6 @@
 package com.example.TaskPro.Repository;
 
 import com.example.TaskPro.Models.Project;
-import com.example.TaskPro.Models.UserEntity;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,18 +8,16 @@ import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class ProjectRepositoryTests {
-    @Autowired
+
     ProjectRepository projectRepository;
 
-    @Autowired
-    UserRepository userRepository;
+
+    UserRepositoryTests userRepository;
 
     @Test
     public void ProjectRepository_existbyId_returnTrue(){

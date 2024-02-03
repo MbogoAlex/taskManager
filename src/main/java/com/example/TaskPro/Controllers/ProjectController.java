@@ -24,13 +24,13 @@ import static java.util.Map.of;
 @RestController
 @RequestMapping("/api")
 public class ProjectController {
-    @Autowired
+
     ProjectService projectService;
 
-    @Autowired
+
     UserRepository userRepository;
 
-    @Autowired
+
     ProjectRepository projectRepository;
 
     @PostMapping("/createProject/userId={userId}")

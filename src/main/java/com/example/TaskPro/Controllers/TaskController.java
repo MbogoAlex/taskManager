@@ -28,21 +28,21 @@ import static java.util.Map.of;
 @RestController
 @RequestMapping("/api")
 public class TaskController {
-    @Autowired
+
     private TaskService taskService;
-    @Autowired
+
     private TaskRepository taskRepository;
 
-    @Autowired
+
     private UserService userService;
 
-    @Autowired
+
     private UserRepository userRepository;
 
-    @Autowired
+
     private StageRepository stageRepository;
 
-    @Autowired
+
     ProjectRepository projectRepository;
 
     //create new task

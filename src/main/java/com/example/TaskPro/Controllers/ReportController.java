@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class ReportController {
-    @Autowired
+
     ReportService reportService;
 
     @GetMapping("/report/projectId={projectId}")

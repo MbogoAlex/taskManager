@@ -26,10 +26,10 @@ import static java.util.Map.of;
 @RestController
 @RequestMapping("/api")
 public class StageController {
-    @Autowired
+
     private StageService stageService;
 
-    @Autowired
+
     ProjectRepository projectRepository;
 
     @PostMapping("/createStage/projectId={projectId}")

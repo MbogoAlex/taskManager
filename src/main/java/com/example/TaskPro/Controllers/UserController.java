@@ -34,19 +34,18 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 @RestController
 @RequestMapping("/api/auth")
 public class UserController {
-    @Autowired
+
     private UserService service;
 
-    @Autowired
+
     private UserRepository userRepository;
 
-    @Autowired
+
     private RoleRepository roleRepository;
 
-    @Autowired
     private JwtService jwtService;
 
-    @Autowired
+
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")

@@ -22,14 +22,14 @@ import java.util.stream.Collectors;
 public class StageService {
 
 
-    @Autowired
+
     private StageRepository stageRepository;
 
 
-    @Autowired
+
     TaskRepository taskRepository;
 
-    @Autowired
+
     ProjectRepository projectRepository;
 
     public Stage createStage(Stage stage, int projectId) {
@@ -43,25 +43,15 @@ public class StageService {
         return stageRepository.save(newStage);
     }
 
-    @Transactional
-    public void initializeDefaultStage() {
-        Stage defaultStage = stageRepository.findByName("DEFAULT");
-
-        if (defaultStage == null) {
-            defaultStage = new Stage();
-            defaultStage.setName("DEFAULT");
-            stageRepository.save(defaultStage);
-        }
-    }
 
     @Transactional
     public void deleteStage(int stageId) {
         Optional<Stage> stage = stageRepository.findById(stageId);
         List<Task> tasksWithStage = taskRepository.findByStageId(stage);
 
-        if (!tasksWithStage.isEmpty()) {
-            Stage defaultStage = stageRepository.findByName("DEFAULT");
-            tasksWithStage.forEach(task -> task.setStageId(defaultStage));
+        for (Task task : tasksWithStage){
+            task.getAssignedUser().clear();
+            taskRepository.delete(task);
         }
 
         stageRepository.deleteById(stageId);
@@ -87,14 +77,6 @@ public class StageService {
 
 
 
-//    public List<StageWithTask> getAllStagesWithTasks() {
-//        List<Stage> stages = stageRepository.findAll();
-//
-//        // Use findByStage_Id to fetch tasks for each stage directly
-//        return stages.stream()
-//                .map(stage -> new StageWithTask(stage, taskRepository.findByStage_Id(stage.getId())))
-//                .collect(Collectors.toList());
-//    }
 
 
 

@@ -13,10 +13,10 @@ import java.util.List;
 
 @Service
 public class ReportService {
-    @Autowired
+
     private TaskRepository taskRepository;
 
-    @Autowired
+
     private UserRepository userRepository;
 
     public TaskReportDTO generateTaskReport(int projectId) {

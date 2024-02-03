@@ -26,15 +26,15 @@ import java.util.Optional;
 @Service
 @Slf4j
 public class TaskService {
-    @Autowired
+
     TaskRepository taskRepository;
-    @Autowired
+
     private UserRepository userRepository;
 
-    @Autowired
+
     StageRepository stageRepository;
 
-    @Autowired
+    
     ProjectRepository projectRepository;
 
 
@@ -77,9 +77,6 @@ public class TaskService {
     //assign task
     public void assignTask(AssignTaskDTO newAssignee) {
         Task task = taskRepository.findById(newAssignee.getTaskId());
-        if (task == null) {
-            throw new NotFoundException("Task  not found");
-        }
 
         int[] assigneeUserIds = newAssignee.getAssigneeUserId();
         for (int j = 0; j < assigneeUserIds.length; j++) {

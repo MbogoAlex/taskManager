@@ -28,18 +28,21 @@ import java.util.stream.Stream;
 @Slf4j
 public class ProjectService {
 
-    @Autowired
+
     ProjectRepository projectRepository;
 
-    @Autowired
+
+
+
     TaskRepository taskRepository;
 
-    @Autowired
+
     UserRepository userRepository;
 
 
-    @Autowired
+
     StageRepository stageRepository;
+
 
     public Project createProject(Project project, int userId){
         Project newProject = new Project();
