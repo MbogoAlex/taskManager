@@ -100,7 +100,7 @@ public class ProjectController {
 
 
     @GetMapping("/getProjects/userId={userId}")
-    public ResponseEntity<Response> getAllProjects(@PathVariable("userId") int userId){
+    public ResponseEntity<Response> getProjectsCreatedByUser(@PathVariable("userId") int userId){
         if ( !userRepository.existsById(userId)) {
             throw new NotFoundException("User does not exist");
         }

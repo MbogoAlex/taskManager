@@ -91,6 +91,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDto){
+        System.out.println("LOGIN IN");
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -98,6 +99,7 @@ public class UserController {
                             loginDto.getPassword()
                     ));
             if (authentication.isAuthenticated()) {
+                System.out.println("TRYING TO AUTHENTICATE");
                 String token = jwtService.generateToken(loginDto.getEmail());
                 //return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
                 //userRepository.existsByEmail(loginDto.getEmail());
@@ -114,6 +116,8 @@ public class UserController {
                                 .statusCode(HttpStatus.OK.value())
                                 .build()
                 );
+            } else {
+                System.out.println("USER NOT AUTHENTICATED");
             }
         } catch (AuthenticationException e) {
 

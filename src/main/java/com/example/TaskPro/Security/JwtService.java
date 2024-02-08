@@ -58,6 +58,7 @@ public class JwtService {
 
     private String createToken(Map<String, Object> claims, String userName) {
         long oneWeekInMillis = 7 * 24 * 60 * 60 * 1000;
+        System.out.println("TOKEN WILL EXPIRE ON "+new Date(System.currentTimeMillis() + oneWeekInMillis));
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userName)
